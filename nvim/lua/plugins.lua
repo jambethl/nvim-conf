@@ -40,7 +40,7 @@ packer.startup(function(use)
             event = 'CursorHold',
             run = ':TSUpdate',
             config = function()
-                require('numToStr.plugins.treesitter')
+                require('plugins.treesitter')
             end,
             },
             { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
