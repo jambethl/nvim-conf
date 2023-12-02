@@ -309,10 +309,13 @@ rt.setup({
             -- Code action groups
             vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy"
+            },
+        },
     },
 })
-
-
 
 -- LUA
 -- -------------------------------------
@@ -339,6 +342,10 @@ require 'lspconfig'.sumneko_lua.setup {
         }
     }
 }
+
+-- C/C++
+-- --------------------------------------
+require 'lspconfig'.clangd.setup {}
 
 
 -- LatEx with TexLab
