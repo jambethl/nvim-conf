@@ -156,21 +156,24 @@ vim.cmd [[highlight IndentBlanklineIndent4 guifg=#2d3033 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent5 guifg=#2d3033 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent6 guifg=#2d3033 gui=nocombine]]
 
-require("indent_blankline").setup {
-    -- char = '┊',
-    char = ' ',
-    use_treesitter = true,
-    use_treesitter_scope = true,
-    show_first_indent_level = true,
-    space_char_blankline = " ",
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
-    },
+require("ibl").setup {
+    indent = {
+        char = ' '
+    }
+    -- config = {
+    --    char = ' ',
+    --    use_treesitter = true,
+    --    use_treesitter_scope = true,
+    --    show_first_indent_level = true,
+    --    space_char_blankline = " ",
+    --    char_highlight_list = {
+    --        "IndentBlanklineIndent1",
+    --        "IndentBlanklineIndent2",
+    --        "IndentBlanklineIndent3",
+    --        "IndentBlanklineIndent4",
+    --        "IndentBlanklineIndent5",
+    --        "IndentBlanklineIndent6",
+    --    },
 }
 
 
@@ -200,11 +203,11 @@ require('nvim-tree').setup {
     sort_by = "case_sensitive",
     view = {
         adaptive_size = false,
-        mappings = {
-            list = {
-                { key = "u", action = "dir_up" },
-            },
-        },
+        -- mappings = {
+        --    list = {
+        --        { key = "u", action = "dir_up" },
+        --    },
+        -- },
     },
     renderer = {
         group_empty = true,
@@ -317,9 +320,13 @@ rt.setup({
     },
 })
 
+-- PYTHON
+-- -------------------------------------
+require 'lspconfig'.pyre.setup {}
+
 -- LUA
 -- -------------------------------------
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
@@ -346,7 +353,6 @@ require 'lspconfig'.sumneko_lua.setup {
 -- C/C++
 -- --------------------------------------
 require 'lspconfig'.clangd.setup {}
-
 
 -- LatEx with TexLab
 require 'lspconfig'.texlab.setup {
